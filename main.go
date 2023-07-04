@@ -1,4 +1,4 @@
-package omnibot
+package main
 
 import (
 	"fmt"
@@ -18,7 +18,7 @@ func main() {
 
 	defer rpio.Close()
 
-	pin := rpio.Pin(19)
+	pin := rpio.Pin(12)
 	pin.Mode(rpio.Pwm)
 	pin.Freq(50)
 	pin.DutyCycle(0, 32)
