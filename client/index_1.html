@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMNI</title>
+</head>
+<body>
+
+    <h1>V1.1</h1>
+
+    <script>
+        const execute = () => {
+            const value = document.getElementById("input-1").value;
+            fetch('/?arg='+value)
+            .then(res => {
+                res.text().then(r => append_log(r + "\n"))
+            })
+        }
+
+        const append_log = (text) => {
+            document.getElementById("area-1").value += text;
+        }
+
+    </script>
+    <input type="text" name="input" id="input-1" value="255"/>
+    <button onclick="execute()">Send</button>
+    <br/>
+    <textarea style="height: 10rem; width: 20rem;" id="area-1"></textarea>
+</body>
+</html>

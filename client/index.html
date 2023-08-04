@@ -1,0 +1,58 @@
+<html>
+<header>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</header>
+
+<body>
+
+    <div id="main"></div>
+
+    <style>
+        html,
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+
+    <script type="text/babel">
+        const Controller = () => {
+
+            const click = async (b) => {
+                console.log("b", b)
+                const response = await fetch("/")
+                const data = await response.text();
+                console.log(data)
+            }
+
+            return (
+                <div style={{ width: "100vw", height: "100vh", backgroundColor: "grey", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around" }}>
+                    <div style={{display: "flex", flexDirection: "column", gap: "5rem" }}>
+                        <div onClick={() => click("UP")} style={{ cursor: "pointer", backgroundColor: "white", borderRadius: "50%", width: "20rem", height: "20rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <img alt="UP" src="https://cdn-icons-png.flaticon.com/512/8794/8794981.png" style={{width: "100%"}}/>
+                        </div>
+                        <div onClick={() => click("DOWN")} style={{ cursor: "pointer", backgroundColor: "white", borderRadius: "50%", width: "20rem", height: "20rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <img alt="DOWN" src="https://cdn-icons-png.flaticon.com/512/8794/8794991.png" style={{width: "100%"}}/>
+                        </div>
+                    </div>
+                    <div style={{display: "flex", flexDirection: "row", gap: "5rem" }}>
+                        <div onClick={() => click("LEFT")} style={{ cursor: "pointer", backgroundColor: "white", borderRadius: "50%", width: "20rem", height: "20rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <img alt="LEFT" src="https://cdn-icons-png.flaticon.com/512/8794/8794996.png" style={{width: "100%"}}/>
+                        </div>
+                        <div onClick={() => click("RIGHT")} style={{ cursor: "pointer", backgroundColor: "white", borderRadius: "50%", width: "20rem", height: "20rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <img alt="RIGHT" src="https://cdn-icons-png.flaticon.com/512/8794/8794986.png" style={{width: "100%"}}/>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        const container = document.getElementById('main');
+        const root = ReactDOM.createRoot(container);
+        root.render(<Controller />);
+    </script>
+</body>
+
+</html>
